@@ -1,0 +1,624 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root{
+    --gradient-top: linear-gradient(0deg, rgba(22, 24, 19, 0) 0%, rgba(22, 24, 19, 0.22) 36.98%, rgba(22, 24, 19, 0.47) 70.83%, rgba(22, 24, 19, 0.76) 100%);
+    --gradient-bottom: linear-gradient(180deg, rgba(22, 24, 19, 0) 0%, rgba(22, 24, 19, 0.42) 21.88%, rgba(22, 24, 19, 0.69) 41.67%, rgba(22, 24, 19, 0.9) 61.98%, rgba(22, 24, 19, 0.99) 78.12%, #161813 100%);
+    --sphere-gradient-one: radial-gradient(50% 50% at 20% 25%, #686868 0%, #403F3F 35%, #222222 70%, #000000 100%);
+    --sphere-gradient-two: radial-gradient(51.04% 51.04% at 18.94% 26.18%, #686868 0%, #403F3F 36.98%, #222222 70.83%, #000000 100%);
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'poppins' ,sans-serif;
+    background: #161813;
+    overflow-x: hidden;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    height: 100px;
+    /* background: #000; */
+    transition: .5s;
+    padding: 18px 30px;
+}
+
+.navbar.bg{
+    background: #161813;
+
+}
+
+.links-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    height: 50px;
+    cursor: pointer;
+    margin-top: 10px;
+
+}
+
+.link-item{
+    margin: 0 30px ;
+    transition: .5s;
+}
+
+.link-item a{
+    color: #fff;
+    padding: 20px;
+}
+
+.hero-section{
+width: 100%;
+position: relative;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #fff;
+}
+
+.hero-section-title{
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+font-weight: 300;
+text-transform: capitalize;
+text-align: center;
+font-size: 80px;
+}
+
+.hero-section-sub-heading{
+    text-align: center;
+    text-transform: capitalize;
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+.background{
+    position: absolute;
+    width: 100%;
+    top: 0;left: 0;
+    height: 100%;
+    z-index: -1;
+}
+
+.background-image{
+    position: absolute;
+    top: 0;left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: -2;
+
+}
+
+
+.background::before ,    .background::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 50%;
+
+    }
+
+
+.background::before
+{
+    top: 0;
+left: 0;
+background: var(--gradient-top);
+}
+
+.background::after{
+    bottom: 0;
+left: 0;
+background: var(--gradient-bottom) ;
+}
+
+
+.slider-grid{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+
+}
+
+.griditem{
+    width: 100%;height: 100%;
+    background:#191919ca;
+    opacity: 1;
+    transition: .5s;
+    pointer-events: none;
+}
+
+.griditem.hide{
+    opacity: 0;
+
+}
+.scroll-down-icon{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    animation: down ease-in-out 1s infinite;
+}
+
+@keyframes down {
+    
+    from{bottom: 10%;}
+to{bottom: 8%;}
+
+
+}
+
+.explore-section{
+    position: relative;
+    width: 100%;
+    color: #fff;
+    padding: 8px 10vw;
+}
+
+.section-title{
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.section-ptext{
+    width: 50%;
+    min-width:300px;
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+    opacity: .5;
+}
+
+.tours-container{
+    position: relative;
+    width: 100%;
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(2,1fr);
+    grid-gap: 20px;
+    margin-top: 100px;
+}
+
+.tour-card{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+    align-items: end;
+}
+
+.tour-img{
+    position: absolute;
+    top: 0;left: 0;width: 100%;height: 100%;
+    object-fit: cover;
+    transition: .5s;
+    z-index: -1;
+}
+
+.tour-card:hover .tour-img{
+    opacity: .8;
+    transform: scale(1.1);
+}
+
+.tour-card:nth-child(2){
+    grid-row: span 2;
+}
+.tour-card:last-child{
+    grid-column: span 2;
+}
+
+.tour-name{
+    font-weight: 300;
+
+}
+.tour-action{
+    margin-left: 20px;
+    font-size: 14px;
+    position: relative;
+}
+
+.tour-action::before{
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 2px;
+    background: url('Img/pin.png');
+width: 15px;
+height: 15px;
+background-size: cover;
+}
+
+
+.services-section{
+    color: #fff;
+    padding: 80px 10vw;
+}
+
+.services-grid{
+    width: 100%;display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.service-card{
+    margin-top: 100px;
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
+    border: 1px solid #282828;
+background: #161813;
+padding: 10px;
+display: flex;
+flex-direction: column;
+align-items:center ;
+justify-content: center;
+gap: 20px;
+overflow: hidden;
+position: relative;
+}
+
+.card-icon{
+    text-align: center;
+    font-size: 45px;
+    z-index: 1;
+}
+
+.service-text{
+   text-align: center;
+   padding: 0 20px;
+   z-index: 1;
+}
+
+.circle{
+    position: absolute;
+    top: 0;left: 0;
+    width: 100%;
+    cursor: pointer;
+    height: 100%;
+    transition: .8s;
+    clip-path: circle(0% at 50% 45%);
+}
+
+.service-card:hover  .card-icon{
+    color: #2f2f2f;
+}
+
+.service-card:hover  .service-text{
+    color: #1a1919;
+font-weight: bolder;
+}
+
+.service-card:hover .circle{
+    clip-path: circle(112% at 49% 100%);}
+.service-card:nth-child(1) .circle{
+    background: url(Img/img5.png);
+    background-size: cover;
+}
+
+.service-card:nth-child(2) .circle{
+    background: url(Img/img1.png);
+    background-size: cover;
+}
+
+
+.service-card:nth-child(3) .circle{
+    background: url(Img/img3.png);
+    background-size: cover;
+}
+
+.service-card:nth-child(4) .circle{
+    background: url(Img/img2.png);
+    background-size: cover;
+}
+
+.travel-grid{
+    width: 100%;
+columns: 3;
+column-gap: 20px;
+margin-top: 200px;
+}
+
+.travel-grid img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 20px;border-radius: 10px;
+}
+
+
+.book-section{
+    position: relative;
+    display: flex;
+    padding: 0 10vw;
+width: 100%;
+height: 100vh;
+gap: 30px;
+
+}
+
+.book-img{
+    position: absolute;
+    width: 50%;
+    right: 10px;
+}
+
+.book-content{
+    width: 50%;
+    color: #fff;
+}
+
+.book-now-title{
+    font-weight: 300;
+    width: 300px;
+    font-size: 50px;
+}
+
+.book-now-text{
+    width: 300px;
+line-height: 25px;
+margin: 30px 0; 
+    opacity: .5;
+}
+
+.book-now:hover::before{
+    left: 105%;
+}
+
+.book-now::before{
+    content: '' ;
+position: absolute;
+top: -10px;
+left: -30px;
+width: 20px;
+height: 200%;
+background: #fff;
+opacity: .2;
+transform: rotate(5deg);
+transition: .5s;
+}
+
+.book-now{
+    overflow: hidden;
+    position: relative;
+    padding: 20px 40px;
+outline: none;
+border: none;
+background: #222222;
+color: #fff;
+border-radius: 20px;
+text-transform: capitalize;
+font-size: 18px;
+cursor: pointer;
+border-top-left-radius: 0;
+border-bottom-right-radius: 0;
+
+}
+
+
+footer{
+    width: 100%;
+    padding: 100px 10vw;
+background: #11120f;
+display: flex;
+justify-content: space-evenly;
+flex-wrap: wrap;
+align-items: center;
+position: relative;
+}
+
+.footer-logo{
+    width: 100px;
+    opacity: .5;
+}
+
+.footer-text{
+    color: #fff;
+    opacity: 0.5;
+    font-size: 15px;
+}
+
+.footer-text p{
+    margin: 20px 0;
+}
+
+.copyright{
+    width: 100%;
+    color: #fff;
+    text-transform: capitalize;
+    text-align: center;
+    position: absolute;
+    left: 0;bottom: 0;
+    padding: 10px 0;
+}
+
+
+/* Media Queries */
+@media screen and (max-width:996px) {
+    .link-item{
+        margin: 0 10px;
+    }
+
+    .hero-section-title{
+        font-size: 60px;
+    }
+    
+
+    .tours-container{
+        height: 900px;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(4,1fr);
+    }
+
+    .tour-card:last-child{
+        grid-column: span 1;
+    }
+
+    .tour-card:nth-last-child(3){
+grid-row: span 2;
+    }
+    
+.services-grid{
+    grid-template-columns: repeat(2,1fr);
+}
+
+.service-card:nth-child(3),.service-card:nth-child(4){
+    margin-top: 0;
+}
+
+.travel-grid{
+    columns: 2;
+}
+
+.book-img{
+    width: 40%;
+}
+
+.footer-logo{
+    width: 70px;
+}
+
+.footer-text{
+    font-size: 15px;
+}
+
+}
+
+@media screen and (max-width:798px) {
+    .navbar{
+        height: auto;
+    }
+
+    .link-item{
+        margin-top: 80px;
+        text-align: center;
+    }
+
+    .link-item:nth-child(3){
+        margin: -50px -30px 0 -30px;
+    }
+
+    .link-item a{
+        padding: 10px;
+        margin: auto;
+        display: block;
+    }
+
+.section-title{
+    font-size: 50px;
+}
+
+.slider-grid{
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(3,1fr);
+}
+
+.hero-section-sub-heading{
+    font-size: 15px;
+}
+
+.section-ptext{
+    width: 100%;
+}
+
+.tours-container{
+    height: auto;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(6,1fr);
+
+}
+.tour-card{
+    grid-row: auto !important;
+    height: 400px;
+    grid-column: auto !important;
+}
+
+.services-grid{
+    grid-template-columns: repeat(1,1fr);
+}
+
+.service-card:nth-child(2){
+    margin-top: 0;
+}
+
+
+.travel-grid{
+    columns: 1;
+}
+
+
+
+.book-section{
+    height: auto;
+    padding: 80px 10px;
+}
+
+.book-img{
+    width: 100%;
+    opacity: .5 !important;
+}
+
+.book-content{
+    width: 100%;
+    z-index: 2;
+    text-align: center;
+}
+
+
+.book-now-title,.book-now-text{
+    width: 100%;
+}
+
+}
+
+@media screen and (max-width:480px) {
+    .navbar{
+        width: 100%;
+        font-size: 10px;
+        font-weight: bolder;
+margin-top: 0;
+    }
+}
+
+@media screen and (max-width:410px) {
+    .navbar{
+        width: 100%;
+        font-size: 9px;
+        font-weight: bolder;
+
+    }
+}
+
+@media screen and (max-width:360px) {
+    .navbar{
+        width: 100%;
+        font-size: 8px;
+        font-weight: bolder;
+    }
+}
